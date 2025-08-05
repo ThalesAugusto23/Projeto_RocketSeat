@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("./assets/bg.jpg");
+    background-repeat: no-repeat; /* A imagem de fundo não se repete */
+    background-size: 100% auto; /* Preeche automaticamente o fundo da pág */
+    background-position: top center; /* Duas posições simultaneas: centro e topo */
+    background-color: #121214;
+    color: white
+}
+body *, :root {
+    font-family: "Inter";
+    line-height: 160%;
+}
+
+header {
+    padding-top: 2rem;
+    text-align: center;
+}
+
+header img{ /* Altera a imagem no header */
+    width: 15rem;
+}
+
+main {
+    max-width: 36rem;
+    width: 90%;
+    margin: 3rem auto; /*Espaço de 3rem em baixo e em cima, além do espaço automático nos lados*/
+}
+
+section {
+    background-image: linear-gradient(90deg, #9572fc 0%, #43E7AD 50%, #E2D45C 100%);/*Criamos um degradê linear em um ângulo de 90 graus, começa no roxo na esquerda e gradativamente chega no verde (quando chega nos 50% o roxo está sólido) depois chega no amarelo. O 90 graus indica que as cores começam da esquerda para a direita.*/
+    border-radius: 0.625rem;
+    padding-top: 4px;
+}
+
+section > div { /*seleciona o primeiro nível de div na hierarquia das tags*/
+    padding: 2rem; /*Aqui foi adicionado uma margem em todos os lados do texto em relação a caixa dele*/
+    padding-top: 1.5rem; /*Já tinhamos uma borda interna de 2rem, mas decidimos colcoar uma menor de 1.5rem para a borda do topo*/
+    border-radius: 0.5rem;
+    background-color: #2a2634;
+}
+
+section h2 {
+    letter-spacing: -0.47; /*Espaço entre letras*/
+}
+
+section p {
+    letter-spacing: -0.18px;
+    color: #a1a1aa;
+}
+
+/*Animações*/
+
+main section {
+    opacity: 0; /*O texto está transparente*/
+    transform: translateY(2rem); /*O texto tá 2rem (32px) para baixo*/
+
+    animation-name: appear;
+    animation-duration: 700ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+    100% /*Definimos que no final da "cena" irá acontecer o que está em seguida*/{
+        opacity: 1; /*a opacidade vai de 0 até 1, onde 0 é completamente opaco e 1 é transparente. O texto, após ter ficado opaco (no main section), vai voltar a ser transparente e aparecer na tela*/
+        transform: translateY(0); /*O texto, após está 2rem para baixo (no main section), vai voltar a sua posição orinial*/
+    }
+}
+
+form {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    margin: 1.25rem 0;
+}
+
+input, select {
+    all: unset;
+    border: 2px solid  #9147ff;
+    border-radius: 0.5rem;
+    padding: 0.675rem;
+    font-size: 0.875rem;
+    background-color: #00000066;
+}
+
+input {
+    flex: 1;
+}
+
+button {
+    width: 100%;
+    border: 0;
+    background-image: linear-gradient(245deg, #9572fc 0%, #43E7AD 50%, #E2D45C 100%);
+    padding: 0.675rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.12px;
+
+    transition: all 0.3s;
+}
+
+/*Quando o mouse passar em cima do botão*/
+button:hover {
+    cursor: pointer;
+    transform: translate(-2px);
+    box-shadow: 0.5px 1rem rgba(255,245,107,0.2);
+}
+
+button:disabled {
+    transition: initial;
+    transform: initial;
+    box-shadow: initial;
+    cursor: not-allowed;
+    color: black;
+}
+
+#aiResponse {
+    background: rgba(0,0,0,0.4);
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    border-left: 4px solid #43E7AD;
+}
+
+#aiResponse ul{
+    padding-left: 1.5rem;
+    opacity: 0.8;
+}
+
+#aiResponse p {
+    color:white
+}
+
+.loading{
+    animation: pulse 1s infinite;
+}
+
+.hidden{
+    display: none;
+}
+
+@keyframes pulse {
+    50%{
+        opacity: 0.5;
+    }
+}
